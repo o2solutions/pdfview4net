@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D6A4928-2883-47DD-9B28-F174DE4353DF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>O2S.Samples.PDFView4NET.FormDesigner</RootNamespace>
+    <AssemblyName>FormDesigner</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="O2S.Components.PDFView4NET.Win, Version=7.0.0.0, Culture=neutral, PublicKeyToken=bdf0cc7afcc23208, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\lib\net40\O2S.Components.PDFView4NET.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForm.Designer.cs">
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckBoxPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckBoxPropertiesForm.Designer.cs">
+      <DependentUpon>CheckBoxPropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DropdownListPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DropdownListPropertiesForm.Designer.cs">
+      <DependentUpon>DropdownListPropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListBoxPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListBoxPropertiesForm.Designer.cs">
+      <DependentUpon>ListBoxPropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AppForm.resx">
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckBoxPropertiesForm.resx">
+      <DependentUpon>CheckBoxPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DropdownListPropertiesForm.resx">
+      <DependentUpon>DropdownListPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListBoxPropertiesForm.resx">
+      <DependentUpon>ListBoxPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PushButtonPropertiesForm.resx">
+      <DependentUpon>PushButtonPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RadioButtonPropertiesForm.resx">
+      <DependentUpon>RadioButtonPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignaturePropertiesForm.resx">
+      <DependentUpon>SignaturePropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextBoxPropertiesForm.resx">
+      <DependentUpon>TextBoxPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PushButtonPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PushButtonPropertiesForm.Designer.cs">
+      <DependentUpon>PushButtonPropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RadioButtonPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RadioButtonPropertiesForm.Designer.cs">
+      <DependentUpon>RadioButtonPropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignaturePropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignaturePropertiesForm.Designer.cs">
+      <DependentUpon>SignaturePropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextBoxPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextBoxPropertiesForm.Designer.cs">
+      <DependentUpon>TextBoxPropertiesForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileopen16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnnotationEdit16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldTextBox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldCheckBox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldRadioButton.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldListBox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldComboBox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldPushButton.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldDigitalSignature.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hand16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filesave16.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets" Condition="Exists('..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
