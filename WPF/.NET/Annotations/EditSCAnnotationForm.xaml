@@ -1,0 +1,94 @@
+﻿<Window x:Class="Annotations.EditSCAnnotationForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Annotations"
+    Title="Edit SC annotation" Height="370" Width="300" MinHeight="370" MinWidth="300" MaxHeight="340" MaxWidth="400" WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <local:BoolReverseConverter x:Key="boolReverseConverter"/>
+        <local:PDFDeviceColorToSolidColorBrushConverter x:Key="pdfDeviceColorToSolidColorBrushConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Author-->
+        <Label Grid.Row="0" Grid.Column="0" Content="Author:"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Text="{Binding Path=SCAnnotation.Author}" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}"/>
+
+        <!--Subject-->
+        <Label Grid.Row="1" Grid.Column="0" Content="Subject:"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Path=SCAnnotation.Subject}" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}"/>
+
+        <!--Contents-->
+        <Label Grid.Row="2" Grid.Column="0" Content="Contents:"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="2" AcceptsReturn="True" TextWrapping="Wrap" Height="75" Text="{Binding Path=SCAnnotation.Contents}" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}"/>
+
+        <!--BorderWidth-->
+        <Label Grid.Row="3" Grid.Column="0" Content="Border width:"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Text="{Binding Path=SCAnnotation.BorderWidth}" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}"/>
+        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="3" Width="20" Height="10" Click="IncreaseBorderWidth_Click" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Label Content="^" Margin="-6,-10,-6,-4"/>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="3" Width="20" Height="10" Click="DecreaseBorderWidth_Click" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Label Content="^" Margin="-6,-4,-6,-10">
+                <Label.LayoutTransform>
+                    <RotateTransform Angle="180" />
+                </Label.LayoutTransform>
+            </Label>
+        </Button>
+
+        <!--Border color-->
+        <Label Grid.Row="4" Grid.Column="0" Content="Border color:"/>
+
+        <Grid Grid.Row="4" Grid.Column="1" Margin="2" Height="30" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox VerticalAlignment="Center" Margin="0,0,4,0" IsChecked="True"/>
+            <local:ColorUserControl Grid.Column="1" SelectedColor="{Binding Path=SCAnnotation.Color, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+        </Grid>
+        
+        <!--Interior color-->
+        <Label Grid.Row="5" Grid.Column="0" Content="Interior color:"/>
+
+        <Grid Grid.Row="5" Grid.Column="1" Margin="2" Height="30" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox VerticalAlignment="Center" Margin="0,0,4,0" IsChecked="True"/>
+            <local:ColorUserControl Grid.Column="1" SelectedColor="{Binding Path=SCAnnotation.InteriorColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+        </Grid>
+
+        <!--Locked-->
+        <CheckBox Grid.Row="6" Grid.Column="1" Margin="2" Content="Locked" IsChecked="{Binding IsAnnotationLocked}"/>
+
+        <!--Hidden-->
+        <CheckBox Grid.Row="7" Grid.Column="1" Margin="2" Content="Hidden" IsChecked="{Binding IsAnnotationHidden}"/>
+
+        <!--Ok Cancel-->
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal" Width="236">
+            <Button Height="24" Width="110" Margin="4" Content="OK" Click="Ok_Click"/>
+            <Button Height="24" Width="110" Margin="4" Content="Cancel" Click="Cancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

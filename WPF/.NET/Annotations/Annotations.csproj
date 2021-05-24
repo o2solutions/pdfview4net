@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Annotations</AssemblyName>
+    <Copyright>O2 Solutions</Copyright>
+    <Description>PDFView4NET Sample Application</Description>
+    <Authors>O2 Solutions</Authors>
+    <Company>O2 Solutions</Company>
+    <Product>PDFView4NET for WPF .NET Core</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="O2S.Components.PDFView4NET.WPF" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="AnnotationArrow16.png" />
+    <Resource Include="AnnotationEdit16.png" />
+    <Resource Include="AnnotationEllipse16.png" />
+    <Resource Include="AnnotationFileAttachment16.png" />
+    <Resource Include="AnnotationInk16.png" />
+    <Resource Include="AnnotationLine16.png" />
+    <Resource Include="AnnotationLink16.png" />
+    <Resource Include="AnnotationMarkupHighlight16.png" />
+    <Resource Include="AnnotationPolygon16.png" />
+    <Resource Include="AnnotationPolyLine16.png" />
+    <Resource Include="AnnotationRectangle16.png" />
+    <Resource Include="AnnotationStamp16.png" />
+    <Resource Include="AnnotationText16.png" />
+    <Resource Include="fileexit16.png" />
+    <Resource Include="fileopen16.png" />
+    <Resource Include="filesave16.png" />
+    <Resource Include="Hand16.png" />
+  </ItemGroup>
+
+</Project>
