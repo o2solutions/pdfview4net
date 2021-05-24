@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9E3E810-AFB2-4E01-8CE9-C5984A8318AE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Annotations</RootNamespace>
+    <AssemblyName>Annotations</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="O2S.Components.PDFView4NET.Win, Version=7.0.0.0, Culture=neutral, PublicKeyToken=bdf0cc7afcc23208, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\lib\net40\O2S.Components.PDFView4NET.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForm.Designer.cs">
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditFileAttachmentAnnotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditFileAttachmentAnnotationForm.Designer.cs">
+      <DependentUpon>EditFileAttachmentAnnotationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditInkAnnotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInkAnnotationForm.Designer.cs">
+      <DependentUpon>EditInkAnnotationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditLineAnnotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditLineAnnotationForm.Designer.cs">
+      <DependentUpon>EditLineAnnotationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditLinkAnnotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditLinkAnnotationForm.Designer.cs">
+      <DependentUpon>EditLinkAnnotationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSCAnnotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSCAnnotationForm.Designer.cs">
+      <DependentUpon>EditSCAnnotationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStampAnnotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStampAnnotationForm.Designer.cs">
+      <DependentUpon>EditStampAnnotationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTextAnnotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTextAnnotationForm.Designer.cs">
+      <DependentUpon>EditTextAnnotationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="AppForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditFileAttachmentAnnotationForm.resx">
+      <DependentUpon>EditFileAttachmentAnnotationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInkAnnotationForm.resx">
+      <DependentUpon>EditInkAnnotationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditLineAnnotationForm.resx">
+      <DependentUpon>EditLineAnnotationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditLinkAnnotationForm.resx">
+      <DependentUpon>EditLinkAnnotationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSCAnnotationForm.resx">
+      <DependentUpon>EditSCAnnotationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStampAnnotationForm.resx">
+      <DependentUpon>EditStampAnnotationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTextAnnotationForm.resx">
+      <DependentUpon>EditTextAnnotationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\fileopen16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filesave16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileexit16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnnotationEdit16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hand16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AnnotationArrow16.ico" />
+    <Content Include="Resources\AnnotationEllipse16.ico" />
+    <Content Include="Resources\AnnotationFileAttachment16.ico" />
+    <Content Include="Resources\AnnotationFreeText16.ico" />
+    <Content Include="Resources\AnnotationInk16.ico" />
+    <Content Include="Resources\AnnotationLine16.ico" />
+    <Content Include="Resources\AnnotationLink16.ico" />
+    <Content Include="Resources\AnnotationMarkupHighlight16.ico" />
+    <Content Include="Resources\AnnotationRectangle16.ico" />
+    <Content Include="Resources\AnnotationStamp16.ico" />
+    <Content Include="Resources\AnnotationText16.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets" Condition="Exists('..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\O2S.Components.PDFView4NET.Win.7.0.0.0\build\net40\O2S.Components.PDFView4NET.Win.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
