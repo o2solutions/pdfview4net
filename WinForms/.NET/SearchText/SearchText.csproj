@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>SearchText</AssemblyName>
+    <Copyright>O2 Solutions</Copyright>
+    <Description>PDFView4NET Sample Application</Description>
+    <Authors>O2 Solutions</Authors>
+    <Company>O2 Solutions</Company>
+    <Product>PDFView4NET for Windows Forms .NET Core</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="O2S.Components.PDFView4NET.Win" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>
