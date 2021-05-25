@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>ZoomAndPageLayout</AssemblyName>
+    <Copyright>O2 Solutions</Copyright>
+    <Description>PDFView4NET Sample Application</Description>
+    <Authors>O2 Solutions</Authors>
+    <Company>O2 Solutions</Company>
+    <Product>PDFView4NET for WPF .NET Core</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="O2S.Components.PDFView4NET.WPF" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fileopen16.png" />
+    <Resource Include="filesave16.png" />
+	<Resource Include="fileexit16.png" />
+	<Resource Include="ZoomIn16.png" />
+	<Resource Include="ZoomOut16.png" />
+	<Resource Include="ZoomDynamic16.png" />
+	<Resource Include="ZoomMarquee16.png" />
+	<Resource Include="ZoomActualSize16.png" />
+	<Resource Include="ZoomFitVisible16.png" />
+	<Resource Include="ZoomFitWidth16.png" />
+	<Resource Include="ZoomFitHeight16.png" />
+	<Resource Include="DisplaySinglePage16.png" />
+	<Resource Include="DisplayOneColumn16.png" />
+	<Resource Include="DisplayTwoColumn16.png" />
+  </ItemGroup>
+
+</Project>
