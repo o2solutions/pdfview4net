@@ -1,0 +1,131 @@
+﻿<Window x:Class="FormDesigner.VB.SignaturePropertiesForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:FormDesigner.FormDesigner.VB"
+    Title="Signature Properties" Height="410" Width="500">
+
+    <Window.Resources>
+        <local:PDFDeviceColorToSolidColorBrushConverter x:Key="pdfDeviceColorToSolidColorBrushConverter"/>
+        <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+        <local:ReverseBoolToVisibilityConverter x:Key="reverseBoolToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Field name:"/>
+            <TextBox Grid.Column="1" Margin="2" Text="{Binding Path=SignatureField.Name}"/>
+
+            <Label Grid.Row="1" Content="Tooltip:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Path=SignatureField.Tooltip}"/>
+        </Grid>
+
+        <TabControl Grid.Row="1" Margin="2">
+            <TabItem Header="Appearance">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Visibility:"/>
+                        <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding PDFFieldWidgetVisibilityStatuses}" SelectedItem="{Binding Path=SignatureWidget.VisibilityStatus}"/>
+
+                        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="2" Orientation="Horizontal">
+                            <CheckBox Margin="2" Width="100" VerticalAlignment="Center" Content="Read only" IsChecked="{Binding Path=SignatureField.ReadOnly}"/>
+                            <CheckBox Margin="2" Width="100" VerticalAlignment="Center" Content="Required" IsChecked="{Binding Path=SignatureField.NoExport}"/>
+                            <CheckBox Margin="2" Width="100" VerticalAlignment="Center" Content="Locked" IsChecked="{Binding IsLocked}"/>
+                        </StackPanel>
+
+                        <Label Grid.Column="2" Content="Orientation:"/>
+                        <ComboBox Grid.Column="3" Margin="2" ItemsSource="{Binding PDFRotationModes}" SelectedItem="{Binding Path=SignatureWidget.Rotation}"/>
+                    </Grid>
+
+                    <GroupBox Grid.Row="1" Header="Borders and colors">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Border width:"/>
+                            <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding BorderWidths}" SelectedIndex="{Binding Path=SignatureWidget.BorderWidth}"/>
+
+                            <Label Grid.Row="1" Content="Border style:"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding PDFBorderStyles}" SelectedItem="{Binding Path=SignatureWidget.BorderStyle}"/>
+
+                            <Label Grid.Column="2" Content="Border color:"/>
+                            <local:ColorUserControl Grid.Column="3" Margin="2" SelectedColor="{Binding Path=SignatureWidget.BorderColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+
+                            <Label Grid.Row="1" Grid.Column="2" Content="Fill color:"/>
+                            <local:ColorUserControl Grid.Row="1" Grid.Column="3" Margin="2" SelectedColor="{Binding Path=SignatureWidget.BackColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="2" Header="Text">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Font:"/>
+                            <ComboBox Grid.Column="1" Grid.ColumnSpan="3" Margin="2" ItemsSource="{Binding Fonts}" SelectedIndex="{Binding SelectedFontIndex}"/>
+
+                            <Label Grid.Row="1" Content="Size:"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding FontSizes}" SelectedValue="{Binding SelectedFontSize}"/>
+
+                            <Label Grid.Row="1" Grid.Column="2" Content="Color:"/>
+                            <local:ColorUserControl Grid.Row="1" Grid.Column="3" Margin="2" SelectedColor="{Binding Path=SignatureWidget.TextColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Margin="0,6,0,0">
+            <Button Margin="4" Width="100" Height="24" Content="OK" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Cancel" Click="Cancel_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Close" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource reverseBoolToVisibilityConverter}}"/>
+        </StackPanel>
+    </Grid>
+</Window>

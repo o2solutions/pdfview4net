@@ -1,0 +1,165 @@
+﻿<Window x:Class="FormDesigner.VB.TextBoxPropertiesForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:FormDesigner.FormDesigner.VB"
+    Title="TextBox Properties" Height="410" Width="500">
+    
+    <Window.Resources>
+        <local:PDFDeviceColorToSolidColorBrushConverter x:Key="pdfDeviceColorToSolidColorBrushConverter"/>
+        <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+        <local:ReverseBoolToVisibilityConverter x:Key="reverseBoolToVisibilityConverter"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Content="Field name:"/>
+            <TextBox Grid.Column="1" Margin="2" Text="{Binding Path=TextBoxField.Name}"/>
+            
+            <Label Grid.Row="1" Content="Tooltip:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Path=TextBoxField.Tooltip}"/>
+        </Grid>
+        
+        <TabControl Grid.Row="1" Margin="2">
+            <TabItem Header="Appearance">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Visibility:"/>
+                        <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding PDFFieldWidgetVisibilityStatuses}" SelectedItem="{Binding Path=TextBoxWidget.VisibilityStatus}"/>
+
+                        <Label Grid.Row="1" Content="Align:"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding PDFFieldTextAlignments}" SelectedItem="{Binding Path=TextBoxWidget.Align}"/>
+
+                        <Label Grid.Column="2" Content="Orientation:"/>
+                        <ComboBox Grid.Column="3" Margin="2" ItemsSource="{Binding PDFRotationModes}" SelectedItem="{Binding Path=TextBoxWidget.Rotation}"/>
+                    </Grid>
+                    
+                    <GroupBox Grid.Row="1" Header="Borders and colors">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Border width:"/>
+                            <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding BorderWidths}" SelectedIndex="{Binding Path=TextBoxWidget.BorderWidth}"/>
+
+                            <Label Grid.Row="1" Content="Border style:"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding PDFBorderStyles}" SelectedItem="{Binding Path=TextBoxWidget.BorderStyle}"/>
+
+                            <Label Grid.Column="2" Content="Border color:"/>
+                            <local:ColorUserControl Grid.Column="3" Margin="2" SelectedColor="{Binding Path=TextBoxWidget.BorderColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                            
+                            <Label Grid.Row="1" Grid.Column="2" Content="Fill color:"/>
+                            <local:ColorUserControl Grid.Row="1" Grid.Column="3" Margin="2" SelectedColor="{Binding Path=TextBoxWidget.BackColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="2" Header="Text">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Font:"/>
+                            <ComboBox Grid.Column="1" Grid.ColumnSpan="3" Margin="2" ItemsSource="{Binding Fonts}" SelectedIndex="{Binding SelectedFontIndex}"/>
+
+                            <Label Grid.Row="1" Content="Size:"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding FontSizes}" SelectedValue="{Binding SelectedFontSize}"/>
+
+                            <Label Grid.Row="1" Grid.Column="2" Content="Color:"/>
+                            <local:ColorUserControl Grid.Row="1" Grid.Column="3" Margin="2" SelectedColor="{Binding Path=TextBoxWidget.TextColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Options">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <CheckBox Grid.Row="0" Grid.Column="0" Margin="4" Content="Multiline" IsChecked="{Binding Path=TextBoxField.Multiline}"/>
+                    <CheckBox Grid.Row="1" Grid.Column="0" Margin="4" Content="Scroll long text" IsChecked="{Binding Path=TextBoxField.ScrollLongText}"/>
+                    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="4">
+                        <CheckBox Content="Limit of" Name="LimitCheckBox" VerticalAlignment="Center" IsChecked="{Binding IsLimitVisible, Mode=OneWay}" Unchecked="LimitCheckBoxCheckChanged" Checked="LimitCheckBoxCheckChanged"/>
+                        <TextBox Margin="10,0,0,0" Width="70" Text="{Binding Path=TextBoxField.MaxLength, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsLimitVisible, Mode=OneWay, Converter={StaticResource boolToVisibilityConverter}}"/>
+                        <Label Content="characters"/>
+                    </StackPanel>
+                    <CheckBox Grid.Row="3" Grid.Column="0" Margin="4" Content="Password" IsChecked="{Binding Path=TextBoxField.Password}"/>
+                    <CheckBox Grid.Row="4" Grid.Column="0" Margin="4" Content="Field is used for file selection" IsChecked="{Binding Path=TextBoxField.FileSelect}"/>
+                    <CheckBox Grid.Row="5" Grid.Column="0" Margin="4" Content="Check spelling" IsChecked="{Binding Path=TextBoxField.CheckSpelling}"/>
+                    <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Margin="4">
+                        <CheckBox Content="Comb of" VerticalAlignment="Center" IsChecked="{Binding Path=TextBoxField.Comb}"/>
+                        <TextBox Margin="10,0,0,0" Width="70" TextChanged="CombTextChanged" Text="{Binding Path=TextBoxField.MaxLength, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding TextBoxField.Comb, Converter={StaticResource boolToVisibilityConverter}}"/>
+                        <Label Content="characters"/>
+                    </StackPanel>
+                    
+                    <CheckBox Grid.Row="0" Grid.Column="1" Margin="4" Content="Read only" IsChecked="{Binding Path=TextBoxField.ReadOnly}"/>
+                    <CheckBox Grid.Row="1" Grid.Column="1" Margin="4" Content="No export" IsChecked="{Binding Path=TextBoxField.NoExport}"/>
+                    <CheckBox Grid.Row="2" Grid.Column="1" Margin="4" Content="Locked" IsChecked="{Binding IsLocked}"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Margin="0,6,0,0">
+            <Button Margin="4" Width="100" Height="24" Content="OK" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Cancel" Click="Cancel_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Close" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource reverseBoolToVisibilityConverter}}"/>
+        </StackPanel>
+    </Grid>
+</Window>

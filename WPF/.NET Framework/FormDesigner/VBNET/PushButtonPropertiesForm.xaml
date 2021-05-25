@@ -1,0 +1,149 @@
+﻿<Window x:Class="FormDesigner.VB.PushButtonPropertiesForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:FormDesigner.FormDesigner.VB"
+    Title="PushButton Properties" Height="460" Width="500">
+    
+    <Window.Resources>
+        <local:PDFDeviceColorToSolidColorBrushConverter x:Key="pdfDeviceColorToSolidColorBrushConverter"/>
+        <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+        <local:ReverseBoolToVisibilityConverter x:Key="reverseBoolToVisibilityConverter"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Content="Field name:"/>
+            <TextBox Grid.Column="1" Margin="2" Text="{Binding Path=PushButtonField.Name}"/>
+            
+            <Label Grid.Row="1" Content="Tooltip:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Path=PushButtonField.Tooltip}"/>
+        </Grid>
+        
+        <TabControl Grid.Row="1" Margin="2">
+            <TabItem Header="Appearance">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Visibility:"/>
+                        <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding PDFFieldWidgetVisibilityStatuses}" SelectedItem="{Binding Path=PushButtonWidget.VisibilityStatus}"/>
+
+                        <Label Grid.Row="1" Content="Caption:"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Grid.ColumnSpan="3" Text="{Binding Path=PushButtonWidget.Caption}"/>
+
+                        <Label Grid.Column="2" Content="Orientation:"/>
+                        <ComboBox Grid.Column="3" Margin="2" ItemsSource="{Binding PDFRotationModes}" SelectedItem="{Binding Path=PushButtonWidget.Rotation}"/>
+                    </Grid>
+                    
+                    <GroupBox Grid.Row="1" Header="Borders and colors">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Border width:"/>
+                            <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding BorderWidths}" SelectedIndex="{Binding Path=PushButtonWidget.BorderWidth}"/>
+
+                            <Label Grid.Row="1" Content="Border style:"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding PDFBorderStyles}" SelectedItem="{Binding Path=PushButtonWidget.BorderStyle}"/>
+
+                            <Label Grid.Column="2" Content="Border color:"/>
+                            <local:ColorUserControl Grid.Column="3" Margin="2" SelectedColor="{Binding Path=PushButtonWidget.BorderColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                            
+                            <Label Grid.Row="1" Grid.Column="2" Content="Fill color:"/>
+                            <local:ColorUserControl Grid.Row="1" Grid.Column="3" Margin="2" SelectedColor="{Binding Path=PushButtonWidget.BackColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="2" Header="Text">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Font:"/>
+                            <ComboBox Grid.Column="1" Grid.ColumnSpan="3" Margin="2" ItemsSource="{Binding Fonts}" SelectedIndex="{Binding SelectedFontIndex}"/>
+
+                            <Label Grid.Row="1" Content="Size:"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding FontSizes}" SelectedValue="{Binding SelectedFontSize}"/>
+
+                            <Label Grid.Row="1" Grid.Column="2" Content="Color:"/>
+                            <local:ColorUserControl Grid.Row="1" Grid.Column="3" Margin="2" SelectedColor="{Binding Path=PushButtonWidget.TextColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+                    
+                    <GroupBox Grid.Row="3" Header="Behavior">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Click style:"/>
+                            <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding PDFPushButtonHighlightModes}" SelectedValue="{Binding Path=PushButtonWidget.HighlightMode}"/>
+
+                            <CheckBox Grid.Row="0" Grid.Column="2" Margin="4" VerticalAlignment="Center" Content="Read only" IsChecked="{Binding Path=PushButtonField.ReadOnly}"/>
+                            <CheckBox Grid.Row="0" Grid.Column="3" Margin="4" VerticalAlignment="Center" Content="Locked" IsChecked="{Binding IsLocked}"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Margin="0,6,0,0">
+            <Button Margin="4" Width="100" Height="24" Content="OK" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Cancel" Click="Cancel_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Close" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource reverseBoolToVisibilityConverter}}"/>
+        </StackPanel>
+    </Grid>
+</Window>

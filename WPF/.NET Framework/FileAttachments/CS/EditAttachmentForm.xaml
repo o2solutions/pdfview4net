@@ -1,0 +1,30 @@
+﻿<Window x:Class="FileAttachments.EditAttachmentForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Edit attachment" Height="130" Width="500">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="File:"/>
+        <TextBox Grid.Column="1" Margin="2" IsEnabled="False" Text="{Binding FileName}"/>
+        <Button Grid.Column="2" Margin="2" Width="30" Content="..." Name="BrowseButton" Click="Browse_Click"/>
+        
+        <Label Grid.Row="1" Content="Description:"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Description}"/>
+        
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Margin="4" Height="24" Width="50" Content="OK" Click="Ok_Click"/>
+            <Button Margin="4" Height="24" Width="50" Content="Cancel" Click="Cancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

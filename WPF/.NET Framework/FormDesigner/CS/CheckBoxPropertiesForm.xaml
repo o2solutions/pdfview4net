@@ -1,0 +1,146 @@
+﻿<Window x:Class="FormDesigner.CheckBoxPropertiesForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:FormDesigner"
+    Title="CheckBox Properties" Height="450" Width="500">
+
+    <Window.Resources>
+        <local:PDFDeviceColorToSolidColorBrushConverter x:Key="pdfDeviceColorToSolidColorBrushConverter"/>
+        <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+        <local:ReverseBoolToVisibilityConverter x:Key="reverseBoolToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Field name:"/>
+            <TextBox Grid.Column="1" Margin="2" Text="{Binding Path=CheckBoxField.Name}"/>
+
+            <Label Grid.Row="1" Content="Tooltip:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Path=CheckBoxField.Tooltip}"/>
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="116"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="116"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="CheckBox Style:"/>
+                <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding RadioButtonStyles}" SelectedItem="{Binding Path=CheckBoxWidget.CheckSymbolStyle}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="Export value:"/>
+                <TextBox Grid.Row="0" Grid.Column="3" Margin="2" Text="{Binding Path=CheckBoxWidget.ExportValue}"/>
+                
+                <CheckBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Content="CheckBox is checked by default" IsChecked="{Binding Path=CheckBoxField.Checked}"/>
+            </Grid>
+        </Grid>
+
+        <TabControl Grid.Row="1" Margin="2">
+            <TabItem Header="Appearance">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Visibility:"/>
+                        <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding PDFFieldWidgetVisibilityStatuses}" SelectedItem="{Binding Path=CheckBoxWidget.VisibilityStatus}"/>
+
+                        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="2" Orientation="Horizontal">
+                            <CheckBox Margin="2" Width="100" VerticalAlignment="Center" Content="Read only" IsChecked="{Binding Path=CheckBoxField.ReadOnly}"/>
+                            <CheckBox Margin="2" Width="100" VerticalAlignment="Center" Content="Required" IsChecked="{Binding Path=CheckBoxField.NoExport}"/>
+                            <CheckBox Margin="2" Width="100" VerticalAlignment="Center" Content="Locked" IsChecked="{Binding IsLocked}"/>
+                        </StackPanel>
+
+                        <Label Grid.Column="2" Content="Orientation:"/>
+                        <ComboBox Grid.Column="3" Margin="2" ItemsSource="{Binding PDFRotationModes}" SelectedItem="{Binding Path=CheckBoxWidget.Rotation}"/>
+                    </Grid>
+
+                    <GroupBox Grid.Row="1" Header="Borders and colors">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Border width:"/>
+                            <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding BorderWidths}" SelectedIndex="{Binding Path=CheckBoxWidget.BorderWidth}"/>
+
+                            <Label Grid.Row="1" Content="Border style:"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="2" ItemsSource="{Binding PDFBorderStyles}" SelectedItem="{Binding Path=CheckBoxWidget.BorderStyle}"/>
+
+                            <Label Grid.Column="2" Content="Border color:"/>
+                            <local:ColorUserControl Grid.Column="3" Margin="2" SelectedColor="{Binding Path=CheckBoxWidget.BorderColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+
+                            <Label Grid.Row="1" Grid.Column="2" Content="Fill color:"/>
+                            <local:ColorUserControl Grid.Row="1" Grid.Column="3" Margin="2" SelectedColor="{Binding Path=CheckBoxWidget.BackColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="2" Header="Text">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Content="Color:"/>
+                            <local:ColorUserControl Grid.Row="0" Grid.Column="1" Margin="2" SelectedColor="{Binding Path=CheckBoxWidget.TextColor, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Margin="0,6,0,0">
+            <Button Margin="4" Width="100" Height="24" Content="OK" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Cancel" Click="Cancel_Click" Visibility="{Binding IsCancelable, Converter={StaticResource boolToVisibilityConverter}}"/>
+            <Button Margin="4" Width="100" Height="24" Content="Close" Click="Ok_Click" Visibility="{Binding IsCancelable, Converter={StaticResource reverseBoolToVisibilityConverter}}"/>
+        </StackPanel>
+    </Grid>
+</Window>
