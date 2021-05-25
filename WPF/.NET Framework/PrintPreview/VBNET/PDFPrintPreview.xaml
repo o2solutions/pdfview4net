@@ -1,0 +1,9 @@
+﻿<Window x:Class="PrintPreview.PDFPrintPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="PDFView4NET WPF Edition - Print Preview" Height="500" Width="400">
+
+    <Grid>
+        <DocumentViewer Document="{Binding PrintPreviewDocument}"/>
+    </Grid>
+</Window>

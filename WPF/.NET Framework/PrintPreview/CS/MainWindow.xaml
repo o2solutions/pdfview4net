@@ -1,0 +1,24 @@
+﻿<Window x:Class="PrintPreview.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="PDFView4NET WPF Edition - PrintPreview PDF" Height="110" Width="600">
+    
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="PDF file:" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="2" Height="24" IsEnabled="True" Name="FilePathTextBox" Text="..\..\..\..\..\SupportFiles\multicolumntextandimages.pdf"/>
+        <Button Grid.Column="2" Width="50" Height="24" Margin="2" Content="..." Click="Browse_Click"/>
+        
+        <CheckBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="2" Content="Autorotate" Name="AutoRotateCheckBox"/>
+        <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="120" Height="24" Margin="2" Content="Show preview" Click="Preview_Click"/>
+    </Grid>
+</Window>
