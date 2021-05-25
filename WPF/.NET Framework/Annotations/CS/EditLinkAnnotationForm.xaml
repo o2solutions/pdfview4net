@@ -1,0 +1,86 @@
+﻿<Window x:Class="Annotations.EditLinkAnnotationForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Annotations"
+    Title="Edit link annotation" Height="270" Width="300" MinHeight="270" MinWidth="300" MaxHeight="340" MaxWidth="400" WindowStartupLocation="CenterOwner">
+    
+    <Window.Resources>
+        <local:BoolReverseConverter x:Key="boolReverseConverter"/>
+        <local:PDFDeviceColorToSolidColorBrushConverter x:Key="pdfDeviceColorToSolidColorBrushConverter"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Destination group-->
+        <GroupBox Grid.ColumnSpan="2" Header="Destination" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <RadioButton Content="Page:" Name="PageRadio" VerticalAlignment="Center" IsChecked="{Binding IsPageEnabled, Mode=OneWay}"/>
+                <ComboBox Grid.Column="1" Margin="2" SelectedItem="{Binding Path=GoToPageNumber}" ItemsSource="{Binding Pages}"/>
+                
+                <RadioButton Grid.Row="1" Name="UriRadio" Content="URL:" VerticalAlignment="Center" IsChecked="{Binding IsPageEnabled, Mode=OneWay, Converter={StaticResource boolReverseConverter}}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Path=GoToURI, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </GroupBox>
+        
+        <!--BorderWidth-->
+        <Label Grid.Row="1" Grid.Column="0" Content="Border width:"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Path=LinkAnnotation.BorderWidth}" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}"/>
+        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="3" Width="20" Height="10" Click="IncreaseBorderWidth_Click" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Label Content="^" Margin="-6,-10,-6,-4"/>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="3" Width="20" Height="10" Click="DecreaseBorderWidth_Click" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Label Content="^" Margin="-6,-4,-6,-10">
+                <Label.LayoutTransform>
+                    <RotateTransform Angle="180" />
+                </Label.LayoutTransform>
+            </Label>
+        </Button>
+        
+        <!--Border color-->
+        <Label Grid.Row="2" Grid.Column="0" Content="Border color:"/>
+       
+        <Grid Grid.Row="2" Grid.Column="1" Margin="2" Height="30" IsEnabled="{Binding Path=IsAnnotationLocked, Converter={StaticResource boolReverseConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <CheckBox VerticalAlignment="Center" Margin="0,0,4,0" IsChecked="True"/>
+            <local:ColorUserControl Grid.Column="1" SelectedColor="{Binding Path=LinkAnnotation.Color, Mode=TwoWay, Converter={StaticResource pdfDeviceColorToSolidColorBrushConverter}}"/>
+        </Grid>
+        
+        <!--Locked-->
+        <CheckBox Grid.Row="3" Grid.Column="1" Margin="2" Content="Locked" IsChecked="{Binding IsAnnotationLocked}"/>
+        
+        <!--Hidden-->
+        <CheckBox Grid.Row="4" Grid.Column="1" Margin="2" Content="Hidden" IsChecked="{Binding IsAnnotationHidden}"/>
+        
+        <!--Ok Cancel-->
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" Width="236">
+            <Button Height="24" Width="110" Margin="4" Content="OK" Click="Ok_Click"/>
+            <Button Height="24" Width="110" Margin="4" Content="Cancel" Click="Cancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
