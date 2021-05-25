@@ -33,6 +33,11 @@ namespace Annotations
             PdfControl.AnnotationToolTipPopup += new System.EventHandler<O2S.Components.PDFView4NET.WPF.EventArgs.AnnotationToolTipPopupEventArgs>(PdfControl_AnnotationToolTipPopup);
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            PdfControl.Document = new PDFDocument() { FilePath = "..\\..\\..\\..\\..\\..\\SupportFiles\\Annotations.pdf" };
+        }
+
         /// <summary>
         /// Handles the AnnotationToolTipPopup event of the PdfControl control.
         /// </summary>
