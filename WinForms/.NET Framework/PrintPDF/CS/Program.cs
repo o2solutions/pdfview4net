@@ -11,6 +11,8 @@ namespace O2S.Samples.PDFView4NET.PrintPDF
     {
         static void Main(string[] args)
         {
+            CheckForQuadrifoglio();
+			
             // Load the PDF file.
             PDFFile file = PDFFile.Open("..\\..\\..\\..\\..\\SupportFiles\\multicolumntextandimages.pdf");
             // Create a default printer settings to print on the default printer.
@@ -25,6 +27,21 @@ namespace O2S.Samples.PDFView4NET.PrintPDF
             file.Print(pdfPrintSettings);
 
             file.Dispose();
+        }
+
+        public static void CheckForQuadrifoglio()
+        {
+            string platform = IntPtr.Size == 4 ? "x86" : "x64";
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            string quadrifoglioPath = path + "\\" + platform + "\\O2S.Graphics.Quadrifoglio.dll";
+
+            if (!System.IO.File.Exists(quadrifoglioPath))
+            {
+                throw new ApplicationException(
+                    $"File {quadrifoglioPath} does not exist. " +
+                    $"Please copy the x86/x64 folders from InstallFolder\\Redist\\Quadrifoglio to {path}\\"
+                    );
+            }
         }
     }
 }
