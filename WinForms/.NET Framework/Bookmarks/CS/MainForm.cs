@@ -20,6 +20,9 @@ namespace O2S.Samples.PDFView4NET.Bookmarks
         private void MainForm_Load(object sender, EventArgs e)
         {
             pdfDocument.FilePath = "..\\..\\..\\..\\..\\SupportFiles\\Bookmarks.pdf";
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //pdfPageView.GraphicEngine = PDFGraphicEngine.GdiPlus;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

@@ -18,6 +18,9 @@ namespace RotatePage
 
         private void AppForm_Load(object sender, EventArgs e)
         {
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //pdfPageView.GraphicEngine = PDFGraphicEngine.GdiPlus;
             pdfDocument.FilePath = "..\\..\\..\\..\\..\\SupportFiles\\multicolumntextandimages.pdf";
             for (int i = 0; i < pdfDocument.PageCount; i++)
             {

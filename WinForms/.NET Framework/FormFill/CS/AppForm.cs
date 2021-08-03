@@ -19,6 +19,9 @@ namespace FormFill
         {
             pdfDoc.FilePath = "..\\..\\..\\..\\..\\SupportFiles\\pdfform.pdf";
             txtFile.Text = "..\\..\\..\\..\\..\\SupportFiles\\pdfform.pdf";
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //pageView.GraphicEngine = PDFGraphicEngine.GdiPlus;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

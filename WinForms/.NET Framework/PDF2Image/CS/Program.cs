@@ -16,6 +16,9 @@ namespace O2S.Samples.PDFView4NET.PDF2Image
             // Load the PDF file.
             PDFFile file = 
                 PDFFile.Open("..\\..\\..\\..\\..\\SupportFiles\\MultiColumnTextAndImages.pdf");
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //file.GraphicEngine = PDFGraphicEngine.GdiPlus;
             for (int i = 0; i < file.PageCount; i++)
             {
                 // Convert each page to bitmap and save it.

@@ -25,6 +25,9 @@ namespace Annotations
             tcbxZoom.Text = "100";
             pdfDocument.FilePath = "..\\..\\..\\..\\..\\SupportFiles\\annotations.pdf";
             tscbxAnnotationTooltips.SelectedIndex = 0;
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //pdfPageView.GraphicEngine = PDFGraphicEngine.GdiPlus;
         }
 
         private void tbtnOpen_Click(object sender, EventArgs e)

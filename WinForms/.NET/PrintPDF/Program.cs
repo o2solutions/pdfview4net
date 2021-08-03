@@ -13,6 +13,9 @@ namespace O2S.Samples.PDFView4NET.PrintPDF
         {
             // Load the PDF file.
             PDFFile file = PDFFile.Open("..\\..\\..\\..\\..\\..\\SupportFiles\\multicolumntextandimages.pdf");
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //file.GraphicEngine = PDFGraphicEngine.GdiPlus;
             // Create a default printer settings to print on the default printer.
             PrinterSettings settings = new PrinterSettings();
             PDFPrintSettings pdfPrintSettings = new PDFPrintSettings(settings);

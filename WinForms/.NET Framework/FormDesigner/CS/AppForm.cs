@@ -22,6 +22,9 @@ namespace O2S.Samples.PDFView4NET.FormDesigner
         private void AppForm_Load(object sender, EventArgs e)
         {
             tscbxZoom.SelectedIndex = 2;
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //pageView.GraphicEngine = PDFGraphicEngine.GdiPlus;
         }
 
         #region Toolbar Events

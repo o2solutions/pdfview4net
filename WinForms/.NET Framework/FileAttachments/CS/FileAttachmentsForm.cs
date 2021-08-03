@@ -20,6 +20,9 @@ namespace O2S.Samples.PDFView4NET.FileAttachments
         private void FileAttachmentsForm_Load(object sender, EventArgs e)
         {
             pdfDocument.FilePath = "..\\..\\..\\..\\..\\SupportFiles\\attachments.pdf";
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //pdfPageView.GraphicEngine = PDFGraphicEngine.GdiPlus;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

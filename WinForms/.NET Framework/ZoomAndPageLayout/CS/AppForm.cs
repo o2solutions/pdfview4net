@@ -17,6 +17,9 @@ namespace ZoomAndPageLayout
 
         private void AppForm_Load(object sender, EventArgs e)
         {
+            // Rendering engine can be changed using the GraphicEngine property.
+            // If GraphicEngine is set to GdiPlus then CheckForQuadrifoglio() in Program.cs can be disabled.
+            //pdfPageView.GraphicEngine = PDFGraphicEngine.GdiPlus;
             tcbxZoom.Text = "100";
             pdfDocument.FilePath = "..\\..\\..\\..\\..\\SupportFiles\\multicolumntextandimages.pdf";
         }
