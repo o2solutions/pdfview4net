@@ -6,7 +6,7 @@ The toolkit comes in 2 separate editions, Windows Forms and WPF.
 
 ### PDF Rendering
 **General**
-- Support for .NET Framework 4.x, .NET Core 3.x and .NET 5
+- Support for .NET Framework 4.x, .NET Core 3.x and .NET 5 / 6
 - Load documents from file and stream
 - Support for encrypted files, both RC4 40/128bit and AES 128/256bit are supported
 - Render PDF files to Bmp, Gif, Jpeg or Tiff
